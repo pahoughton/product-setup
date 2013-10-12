@@ -1,0 +1,17 @@
+# .travis.yml - 2013-10-12 10:10
+#
+# Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
+
+language: c
+notifications:
+  email:
+    - paul4hough@gmail.com
+
+before_script:
+  - uname -a
+  - sudo bash setup-product.bash
+  - env
+
+script:
+  - tests/runtests.bash
+  
