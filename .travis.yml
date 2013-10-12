@@ -9,6 +9,9 @@ notifications:
 
 before_script:
   - uname -a
+  - ls -al
+  - pwd
+  - env
   - sudo bash setup-product.bash
   - env
 
