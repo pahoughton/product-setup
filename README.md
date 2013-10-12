@@ -26,7 +26,7 @@ contains two lines:
     git clone https://github.com/pahoughton/product-setup _setup_temp
 	bash _setup_temp/product-setup.bash
 
-You also need a puppet module to describe your dependencies. The
+You also need a puppet file to describe your dependencies. The
 default filename is setup-product.pp, but you can pass any name as an
 argument to product-setup.bash. For example:
 
@@ -37,9 +37,20 @@ argument to product-setup.bash. For example:
 Now emacs will be installed correctly when product-setup.bash
 completes.
 
+If you're puppet file needs any modules, they can be specified in
+setup-product.pp's comments or a setup-product.ppmod file. The name
+must match the file name passed to product-setup.bash with "mod" added
+to it. The ppmod file format is the same as librarian-puppet's
+Puppetfile, see https://github.com/rodjek/librarian-puppet
+
+    
 ## Contribute
 
 [Github pahoughton/..](https://github.com/pahoughton/..)
+
+I'm calling this a 'prototype'. Python has setup.py and
+requirements.txt, ruby has Gemfiles, perl has Makefile.PL and c/c++/objc
+all have autoconf, but that detects, not resolves.
 
 ## Licenses
 
