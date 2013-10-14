@@ -17,4 +17,7 @@ before_script:
 
 script:
   - DEBUG=1 tests/runtests.bash
-  
+
+after_script:
+  - puppet --version
+  - find . -type f -ls
