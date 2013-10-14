@@ -12,4 +12,5 @@ pushd _setup_temp
 git checkout devel
 popd
 bash _setup_temp/product-setup.bash
+DEBUG="${DEBUG}" bash _setup_temp/product-setup.bash
 

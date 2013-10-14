@@ -12,9 +12,9 @@ before_script:
   - ls -al
   - pwd
   - env
-  - sudo bash setup-product.bash
+  - DEBUG=1 sudo bash setup-product.bash
   - env
 
 script:
-  - tests/runtests.bash
+  - DEBUG=1 tests/runtests.bash
   
