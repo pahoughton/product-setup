@@ -20,5 +20,8 @@ script:
 
 after_script:
   - which puppet
+  - bundle gem install puppet
+  - puppet --version
+  - gem install puppet
   - puppet --version
   - find . -type f -ls
