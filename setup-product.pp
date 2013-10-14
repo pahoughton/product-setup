@@ -24,7 +24,7 @@ package { $pkg_list :
   ensure    => 'installed',
   provider  => $pkg_provider,
 }
-pacage { ['rspec-core',
+package { ['rspec-core',
           'puppet',
           'puppet-lint',
           'rspec-puppet',
