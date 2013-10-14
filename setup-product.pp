@@ -23,7 +23,7 @@ case $::osfamily {
     ensure    => 'installed',
     provider  => $pkg_provider,
   }
-  pacage { ['rspec-core'
+  pacage { ['rspec-core',
             'puppet',
             'puppet-lint',
             'rspec-puppet',
