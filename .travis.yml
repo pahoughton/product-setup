@@ -19,5 +19,6 @@ script:
   - DEBUG=1 tests/runtests.bash
 
 after_script:
+  - which puppet
   - puppet --version
   - find . -type f -ls
