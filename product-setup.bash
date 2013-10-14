@@ -10,7 +10,7 @@
 [ -n "${DEBUG}" ] && set -x
 
 mydir=`pwd`/`dirname "$0"`
-setup_pp=${1:'product-setup.pp'}
+setup_pp=${1:-'product-setup.pp'}
 setup_ppmod="${setup_pp}"mod
 
 if [ ! -f "${setup_pp}" ] ; then
