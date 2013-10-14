@@ -1,5 +1,5 @@
-# simple bison install
+# simple package install
 
-package { 'orbit' :
+package { 'ascii' :
   ensure => installed
 }

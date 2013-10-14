@@ -12,9 +12,14 @@ set -x
 
 [ -d tests ] && cd tests
 
-mkdir _test_product_temp/
+[ -d _test_product_temp ] || mkdir _test_product_temp/
 touch _test_product_temp/.sloccount.skip
-ln -s .. _test_product_temp/_setup_temp
+pushd ..
+proddir=`pwd`
+popd
+
+[ -d _test_product_temp/_setup_temp ] || \
+    ln -s "${proddir}" _test_product_temp/_setup_temp
 
 fail=0
 
