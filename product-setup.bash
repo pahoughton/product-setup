@@ -10,7 +10,7 @@
 [ -n "${DEBUG}" ] && set -x
 
 mydir=`pwd`/`dirname "$0"`
-setup_pp=${1:'product-setup.pp'}
+setup_pp=${1:-'setup-product.pp'}
 setup_ppmod="${setup_pp}"mod
 
 if [ ! -f "${setup_pp}" ] ; then
@@ -22,7 +22,7 @@ pushd "${mydir}"
 
 # is puppet installed?
 ppver=`puppet --version`
-if [ "${ppver}" < "3.2.0" ; then
+if [ "${ppver}" '<' "3.2.0" ] ; then
     # need to install
     # FIXME - change to clone specific version
     git clone https://github.com/pahoughton/install-puppet
@@ -32,18 +32,19 @@ if [ "${ppver}" < "3.2.0" ; then
     python install-puppet/bin/install-puppet.py || exit 1
 fi
 
-# is python3 installed?
-pyver=`python3 --version`
-if [ "${pyver}" < "3.1.0" ] ; then
-    # need to install
-    git clone https://github.com/pahoughton/puppet-python
-    pushd puppet-python
-    rake install || exit 1
-    puppet apply -e 'python { 'python install' : }'  || exit 1
-    popd
-fi
+[ -d modules ] || mkdir modules
+cd modules
 
-popd
+# is python3 installed?
+python3 --version > pyver.$$.tmp 2>&1
+pyver=`cat pyver.$$.tmp`
+rm pyver.$$.tmp
+if [ "${pyver}" '<' "Python 3.1.0" ] ; then
+    # need to install
+    git clone https://github.com/pahoughton/puppet-python python
+    cd ..
+    puppet apply -v --modulepath=modules -e 'include python'  || exit 1
+fi
 
 if [ -f "${setup_ppmod}" ] ; then
     echo "Documentation LIES ..."
@@ -51,5 +52,9 @@ if [ -f "${setup_ppmod}" ] ; then
     exit 1
 fi
 
-puppet apply "${setup_pp}"
+
+popd
+pwd
+ls
+puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
     
