@@ -5,12 +5,13 @@
 #
 # Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
 #
-[ -z "${DEBUG}" ] || set -x
+[ -n "${DEBUG}" ] && set -x
 
 [ -d _setup_temp ] || git clone https://github.com/pahoughton/product-setup _setup_temp
 pushd _setup_temp
 git checkout devel
 popd
-bash _setup_temp/product-setup.bash
+pwd
+ls -l
 DEBUG="${DEBUG}" bash _setup_temp/product-setup.bash
 
