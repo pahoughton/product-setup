@@ -4,32 +4,33 @@
 #
 case $::osfamily {
   'Darwin': {
-    $pkg_list ['ruby-full',]
+    $pkg_list = ['ruby-full']
     $pkg_provider = 'macports'
   }
   'Debian' : {
-    $pkg_list ['ruby-full',]
+    $pkg_list = ['ruby-full']
     $pkg_provider = undef
   }
   'RedHat' : {
-    $pkg_list ['ruby-devel',]
+    $pkg_list = ['ruby-devel']
     $pkg_provider = undef
   }
   default : {
-    $pkg_list ['ruby-full',]
+    $pkg_list = ['ruby-full']
     $pkg_provider = undef
   }
-  package { $pkg_list :
-    ensure    => 'installed',
-    provider  => $pkg_provider,
-  }
-  pacage { ['rspec-core',
-            'puppet',
-            'puppet-lint',
-            'rspec-puppet',
-            'puppetlabs_spec_helper',
-            'librarian-puppet'] :
-    ensure    => 'installed'
-    provider  => 'gem'
-  }
 }
+package { $pkg_list :
+  ensure    => 'installed',
+  provider  => $pkg_provider,
+}
+pacage { ['rspec-core',
+          'puppet',
+          'puppet-lint',
+          'rspec-puppet',
+          'puppetlabs_spec_helper',
+          'librarian-puppet'] :
+  ensure    => 'installed',
+  provider  => 'gem',
+}
+
