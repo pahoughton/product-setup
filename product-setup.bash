@@ -34,7 +34,7 @@ cd modules
 
 # is python3 installed?
 python3 --version > pyver.$$.tmp 2>&1
-pyver=`cat pyver.$$.tmp`
+pyver=`grep Python pyver.$$.tmp`
 rm pyver.$$.tmp
 if [ "${pyver}" '<' "Python 3.1.0" ] ; then
     # need to install
