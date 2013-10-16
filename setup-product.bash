@@ -14,6 +14,9 @@ Host github.com
 EOF
 
 [ -d _setup_temp ] || git clone https://github.com/pahoughton/product-setup _setup_temp
+pushd _setup_temp
+git checkout devel
+popd
 pwd
 ls -l
 DEBUG="${DEBUG}" bash _setup_temp/product-setup.bash

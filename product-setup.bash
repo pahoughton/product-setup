@@ -26,9 +26,6 @@ if [ "${ppver}" '<' "3.2.0" ] ; then
     # need to install
     # FIXME - change to clone specific version
     git clone https://github.com/pahoughton/install-puppet
-    pushd install-puppet >/dev/null
-    git checkout devel
-    popd > /dev/null
     python install-puppet/bin/install-puppet.py || exit 1
 fi
 
