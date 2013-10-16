@@ -34,9 +34,9 @@ gem install librarian-puppet
 librarian-puppet init
 
 if [ -f "${setup_ppmod}" ] ; then
-    cp "${setup_ppmod}" modules/Puppetfile
+    cp "${setup_ppmod}" Puppetfile
 fi
-cat >> modules/Puppetfile <<EOF
+cat >> Puppetfile <<EOF
 mod "python",
   :git => "https://github.com/pahoughton/puppet-python"
   :ref => "stable"
