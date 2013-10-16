@@ -38,7 +38,7 @@ if [ -f "${setup_ppmod}" ] ; then
 fi
 cat >> Puppetfile <<EOF
 mod "python",
-  :git => "https://github.com/pahoughton/puppet-python"
+  :git => "https://github.com/pahoughton/puppet-python",
   :ref => "stable"
 EOF
 librarian-puppet install
