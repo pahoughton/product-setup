@@ -19,5 +19,5 @@ git checkout devel
 popd
 pwd
 ls -l
-DEBUG="${DEBUG}" bash _setup_temp/product-setup.bash
+sudo -n bash _setup_temp/product-setup.bash
 

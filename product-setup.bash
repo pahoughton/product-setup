@@ -8,7 +8,7 @@
 # Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
 #
 [ -n "${DEBUG}" ] && set -x
-
+set -x
 mydir=`pwd`/`dirname "$0"`
 setup_pp=${1:-'setup-product.pp'}
 setup_ppmod="${setup_pp}"mod
