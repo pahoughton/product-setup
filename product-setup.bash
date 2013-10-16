@@ -40,7 +40,7 @@ if [ "${pyver}" '<' "Python 3.1.0" ] ; then
     # need to install
     git clone https://github.com/pahoughton/puppet-python python
     cd ..
-    puppet apply -v --modulepath=modules -e 'include python'  || exit 1
+    sudo -n puppet apply -v --modulepath=modules -e 'include python'  || exit 1
 fi
 
 if [ -f "${setup_ppmod}" ] ; then
@@ -53,5 +53,5 @@ fi
 popd
 pwd
 ls
-puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
+sudo -n puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
     
