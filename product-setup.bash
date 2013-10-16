@@ -24,33 +24,25 @@ pushd "${mydir}"
 ppver=`puppet --version`
 if [ "${ppver}" '<' "3.2.0" ] ; then
     # need to install
-    # FIXME - change to clone specific version
     git clone https://github.com/pahoughton/install-puppet
-    pushd install-puppet; git checkout 1.0.1; popd
+    pushd install-puppet; git checkout stable; popd
     sudo -n python install-puppet/bin/install-puppet.py || exit 1
 fi
 
-[ -d modules ] || mkdir modules
-cd modules
-
-# grab my python module for pip3 provider
-git clone https://github.com/pahoughton/puppet-python python
-# is python3 installed?
-python3 --version > pyver.$$.tmp 2>&1
-pyver=`grep Python pyver.$$.tmp`
-rm pyver.$$.tmp
-if [ "${pyver}" '<' "Python 3.1.0" ] ; then
-    # need to install
-    cd ..
-    sudo -n puppet apply -v --modulepath=modules -e 'include python'  || exit 1
-fi
+[ -d modules ] || rm -rf modules
+gem install librarian-puppet
+librarian-puppet init
 
 if [ -f "${setup_ppmod}" ] ; then
-    echo "Documentation LIES ..."
-    echo "Unsupported ${setup_ppmod}"
-    exit 1
+    cp "${setup_ppmod}" modules/Puppetfile
 fi
-
+cat >> modules/Puppetfile <<EOF
+mod "python",
+  :git => "https://github.com/pahoughton/puppet-python"
+  :ref => "stable"
+EOF
+librarian-puppet install
+sudo -n puppet apply -v --modulepath=modules -e 'include python'  || exit 1
 
 popd
 pwd
