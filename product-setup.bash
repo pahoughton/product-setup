@@ -32,13 +32,14 @@ fi
 [ -d modules ] || mkdir modules
 cd modules
 
+# grab my python module for pip3 provider
+git clone https://github.com/pahoughton/puppet-python python
 # is python3 installed?
 python3 --version > pyver.$$.tmp 2>&1
 pyver=`grep Python pyver.$$.tmp`
 rm pyver.$$.tmp
 if [ "${pyver}" '<' "Python 3.1.0" ] ; then
     # need to install
-    git clone https://github.com/pahoughton/puppet-python python
     cd ..
     sudo -n puppet apply -v --modulepath=modules -e 'include python'  || exit 1
 fi
@@ -54,4 +55,7 @@ popd
 pwd
 ls
 sudo -n puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
-    
+# travis-ci needs any gem's installed as the normal user
+if [ -n "${TRAVIS}" ] ; then
+    puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
+fi
