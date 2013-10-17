@@ -29,7 +29,9 @@ if [ "${ppver}" '<' "3.2.0" ] ; then
     sudo -n python install-puppet/bin/install-puppet.py || exit 1
 fi
 
-[ -d modules ] || rm -rf modules
+[ -d modules ] && rm -rf modules
+[ -f Puppetfile ] && rm Puppetfile
+
 gem install librarian-puppet
 librarian-puppet init
 
