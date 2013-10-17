@@ -2,7 +2,7 @@
 #
 # Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
 
-language: c
+language: objective-c
 notifications:
   email:
     - paul4hough@gmail.com
