@@ -1,0 +1,7 @@
+# test-03-ssh_keygen.ppmod - 2013-10-18 07:18
+#
+# Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
+#
+mod "python",
+  :git => "https://github.com/maestrodev/puppet-ssh_keygen",
+  :ref => "v1.0.0"

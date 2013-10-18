@@ -10,6 +10,10 @@
 #
 set -x
 
+if [ "`uname -s`" == 'Darwin' ] ; then
+    PATH="${PATH}:/opt/local/bin"
+fi
+
 [ -d tests ] && cd tests
 
 [ -d _test_product_temp ] || mkdir _test_product_temp/
