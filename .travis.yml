@@ -12,6 +12,7 @@ before_script:
   - ls -al
   - pwd
   - env
+  - sudo env
   - DEBUG=1 bash setup-product.bash
   - env
 
