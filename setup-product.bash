@@ -15,7 +15,7 @@ EOF
 
 [ -d _setup_temp ] || git clone https://github.com/pahoughton/product-setup _setup_temp
 pushd _setup_temp
-git checkout devel
+git checkout test-osx
 popd
 pwd
 ls -l
