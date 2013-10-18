@@ -24,7 +24,7 @@ popd
 fail=0
 
 for fn in test*.pp; do
-    cp "$fn" "_test_product_temp/setup-product.pp"
+    cat config.pp "$fn" > "_test_product_temp/setup-product.pp"
     [ -f "${fn}mod" ] && cp "${fn}mod" "_test_product_temp/setup-product.ppmod"
     pushd _test_product_temp > /dev/null
     bash _setup_temp/product-setup.bash || fail=1

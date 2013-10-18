@@ -2,27 +2,22 @@
 #
 # Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
 #
+Package {
+  provider => $osfamily ? {
+    'Darwin'  => macports,
+    default   => undef,
+  }
+}
 case $::osfamily {
-  'Darwin': {
-    $pkg_list = ['ruby-full']
-    $pkg_provider = 'macports'
-  }
-  'Debian' : {
-    $pkg_list = ['ruby-full']
-    $pkg_provider = undef
-  }
   'RedHat' : {
     $pkg_list = ['ruby-devel']
-    $pkg_provider = undef
   }
   default : {
     $pkg_list = ['ruby-full']
-    $pkg_provider = undef
   }
 }
 package { $pkg_list :
   ensure    => 'installed',
-  provider  => $pkg_provider,
 }
 package { ['rspec-core',
           'puppet',
