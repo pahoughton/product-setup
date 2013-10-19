@@ -30,11 +30,8 @@ fail=0
 for fn in test*.pp; do
     cat config.pp "$fn" > "_test_product_temp/setup-product.pp"
     [ -f "${fn}mod" ] && cp "${fn}mod" "_test_product_temp/setup-product.ppmod"
-    cat "_test_product_temp/setup-product.pp"
     pushd _test_product_temp > /dev/null
     bash _setup_temp/product-setup.bash || fail=1
-    ssh-keygen -f "/Users/george/.ssh/id_rsa" -N '' -C 'puppet generated key' || echo 'ssh-keygen fail'
-    ls -al /tmp/george
     popd > /dev/null
     rspec "`basename ${fn} .pp`_spec.rb" || fail=1
 done

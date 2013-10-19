@@ -51,8 +51,10 @@ sudo -n puppet apply -v --modulepath=modules -e 'include python'  || exit 1
 popd
 pwd
 ls
-sudo -n puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
+sudo -n puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}" || exit 1
 # travis-ci needs any gem's installed as the normal user
 if [ -n "${TRAVIS}" ] ; then
     puppet apply -v --modulepath="${mydir}/modules" "${setup_pp}"
+    echo 'Ignore errors'
 fi
+exit 0
