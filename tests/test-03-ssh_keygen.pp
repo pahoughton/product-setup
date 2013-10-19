@@ -5,7 +5,7 @@
 # A real manifest would use mode 0700
 # 
 user { 'george' :
-  ensure  => 'exists',
+  ensure  => 'present',
   home    => '/Users/george',
 }->
 file { '/Users/george/.ssh' :
