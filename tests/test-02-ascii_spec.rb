@@ -5,6 +5,6 @@
 
 describe "Feature install simple package - ascii" do
   it "provides ascii" do
-    `ascii -v`.should include("ascii 3.1")
+    `ascii -v`.should include("ascii 3")
   end
 end

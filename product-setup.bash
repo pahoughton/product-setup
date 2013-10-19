@@ -32,11 +32,11 @@ fi
 [ -d modules ] && rm -rf modules
 [ -f Puppetfile ] && rm Puppetfile
 
-gem install librarian-puppet
+gem install librarian-puppet-maestrodev
 librarian-puppet init
 
-if [ -f "${setup_ppmod}" ] ; then
-    cp "${setup_ppmod}" Puppetfile
+if [ -f "../${setup_ppmod}" ] ; then
+    cp "../${setup_ppmod}" Puppetfile
 fi
 cat >> Puppetfile <<EOF
 mod "python",

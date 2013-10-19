@@ -24,7 +24,7 @@ package { ['rspec-core',
           'puppet-lint',
           'rspec-puppet',
           'puppetlabs_spec_helper',
-          'librarian-puppet'] :
+          'librarian-puppet-maestrodev'] :
   ensure    => 'installed',
   provider  => 'gem',
 }
