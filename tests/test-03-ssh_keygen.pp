@@ -11,7 +11,7 @@ user { 'george' :
 file { '/Users/george' :
   ensure  => 'directory',
   mode    => '0755',
-  ownwer  => 'george',
+  owner  => 'george',
 }->
 file { '/Users/george/.ssh' :
   ensure  => 'directory',
