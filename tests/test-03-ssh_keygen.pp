@@ -11,10 +11,12 @@ user { 'george' :
 file { '/Users/george' :
   ensure  => 'directory',
   mode    => '0755',
+  ownwer  => 'george',
 }->
 file { '/Users/george/.ssh' :
   ensure  => 'directory',
   mode    => '0755',
+  owner   => 'george',
 }->
 ssh_keygen { 'george' :
   home    => '/Users/george',
