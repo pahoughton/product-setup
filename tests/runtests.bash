@@ -31,6 +31,7 @@ for fn in test*.pp; do
     cat config.pp "$fn" > "_test_product_temp/setup-product.pp"
     [ -f "${fn}mod" ] && cp "${fn}mod" "_test_product_temp/setup-product.ppmod"
     pushd _test_product_temp > /dev/null
+    cat "_test_product_temp/setup-product.pp"
     bash _setup_temp/product-setup.bash || fail=1
     popd > /dev/null
     rspec "`basename ${fn} .pp`_spec.rb" || fail=1
