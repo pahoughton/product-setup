@@ -1,6 +1,6 @@
 # simple package install
 
-file { '/tmp/george' :
+file { '/tmp/george/.ssh' :
   ensure  => 'directory',
 }->
 ssh_keygen { 'george' :
