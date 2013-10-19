@@ -18,6 +18,15 @@ if [ ! -f "${setup_pp}" ] ; then
     exit 2
 fi
 
+if [ -f "${setup_ppmod}" ] ; then
+    cp "${setup_ppmod}" "${mydir}/Puppetfile"
+fi
+
+if ! gem install librarian-puppet-maestrodev; then
+    echo "gem install librarian-puppet-maestrodev failed"
+    exit 1;
+fi
+
 pushd "${mydir}"
 
 # is puppet installed?
@@ -30,14 +39,7 @@ if [ "${ppver}" '<' "3.2.0" ] ; then
 fi
 
 [ -d modules ] && rm -rf modules
-[ -f Puppetfile ] && rm Puppetfile
 
-gem install librarian-puppet-maestrodev
-librarian-puppet init
-
-if [ -f "../${setup_ppmod}" ] ; then
-    cp "../${setup_ppmod}" Puppetfile
-fi
 cat >> Puppetfile <<EOF
 mod "python",
   :git => "https://github.com/pahoughton/puppet-python",
