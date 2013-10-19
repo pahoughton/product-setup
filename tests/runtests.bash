@@ -33,6 +33,7 @@ for fn in test*.pp; do
     cat "_test_product_temp/setup-product.pp"
     pushd _test_product_temp > /dev/null
     bash _setup_temp/product-setup.bash || fail=1
+    ssh-keygen -f "/tmp/george/.ssh/id_rsa" -N '' -C 'puppet generated key' || echo 'ssh-keygen fail'
     popd > /dev/null
     rspec "`basename ${fn} .pp`_spec.rb" || fail=1
 done
