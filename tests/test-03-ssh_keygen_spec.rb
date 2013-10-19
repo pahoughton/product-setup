@@ -4,6 +4,6 @@
 
 describe "Feature use ssh_keygen module to create a key" do
   it "creates id_rsa file" do
-    File.exist?('./.ssh/id_rsa').should be_true
+    File.exist?('~george/.ssh/id_rsa').should be_true
   end
 end

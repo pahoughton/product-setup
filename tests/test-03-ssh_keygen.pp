@@ -2,15 +2,16 @@
 #
 # Copyright (c) 2013 Paul Houghton <paul4hough@gmail.com>
 #
-# recurse not working on osx
-
-file { '/tmp/george' :
-  ensure  => 'directory',
+# A real manifest would use mode 0700
+# 
+user { 'george' :
+  ensure  => 'exists',
+  home    => '/Users/george',
 }->
-file { '/tmp/george/.ssh' :
+file { '/Users/george/.ssh' :
   ensure  => 'directory',
-  recurse => true,
+  mode    => '0755',
 }->
 ssh_keygen { 'george' :
-  home    => '/tmp/george',
+  home    => '/Users/george',
 }
