@@ -8,6 +8,10 @@ user { 'george' :
   ensure  => 'present',
   home    => '/Users/george',
 }->
+file { '/Users/george' :
+  ensure  => 'directory',
+  mode    => '0755',
+}->
 file { '/Users/george/.ssh' :
   ensure  => 'directory',
   mode    => '0755',
