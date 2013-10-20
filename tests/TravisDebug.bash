@@ -6,4 +6,5 @@
 set -x
 env
 ls -al
-apt-cache search '.*'
+apt-cache policy
+# apt-cache search '.*'
