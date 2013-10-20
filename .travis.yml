@@ -8,13 +8,16 @@ notifications:
   email:
     - paul4hough@gmail.com
 
+install:
+  - apt-get update
+#  - bash setup-product.bash
+
 before_script:
   - uname -a
   - ls -al
   - pwd
   - env
   - sudo env
-#  - bash setup-product.bash
 
 script:
 #  - tests/runtests.bash
