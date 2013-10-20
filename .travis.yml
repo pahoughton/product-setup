@@ -9,7 +9,7 @@ notifications:
     - paul4hough@gmail.com
 
 install:
-  - apt-get update
+  - sudo apt-get update
 #  - bash setup-product.bash
 
 before_script:

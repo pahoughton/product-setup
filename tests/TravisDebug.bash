@@ -7,6 +7,6 @@ set -x
 env
 ls -al
 apt-cache policy
-apt-get install python3-pip
+sudo -n apt-get install python3-pip
 
 # apt-cache search '.*'
