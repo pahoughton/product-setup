@@ -10,7 +10,7 @@ notifications:
 
 install:
   - sudo apt-get update
-#  - bash setup-product.bash
+  - bash setup-product.bash
 
 before_script:
   - uname -a
@@ -20,8 +20,8 @@ before_script:
   - sudo env
 
 script:
-#  - tests/runtests.bash
-   - bash tests/TravisDebug.bash
+  - tests/runtests.bash
+#   - bash tests/TravisDebug.bash
    
 after_script:
   - find . -type f -ls

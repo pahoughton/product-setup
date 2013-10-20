@@ -7,6 +7,9 @@ set -x
 env
 ls -al
 apt-cache policy
-sudo -n apt-get install python3-pip
+curl http://python-distribute.org/distribute_setup.py | sudo python3
+curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
+pip-3.3 --version
+# sudo -n apt-get install python3-pip
 
 # apt-cache search '.*'
