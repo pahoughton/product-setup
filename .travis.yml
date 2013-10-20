@@ -14,12 +14,11 @@ before_script:
   - pwd
   - env
   - sudo env
-  - bash setup-product.bash
+#  - bash setup-product.bash
 
 script:
-  - tests/runtests.bash
-
+#  - tests/runtests.bash
+   - bash tests/TravisDebug.bash
+   
 after_script:
-  - which puppet
-  - puppet --version
   - find . -type f -ls

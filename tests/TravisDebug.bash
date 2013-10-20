@@ -6,4 +6,4 @@
 set -x
 env
 ls -al
-
+apt-cache search '.*'
