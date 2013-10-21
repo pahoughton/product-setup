@@ -42,7 +42,7 @@ fi
 cat >> Puppetfile <<EOF
 mod "python",
   :git => "https://github.com/pahoughton/puppet-python",
-  :ref => "test-osx"
+  :ref => "devel"
 EOF
 librarian-puppet install
 sudo -n puppet apply -v --modulepath=modules -e 'include python'  || exit 1
