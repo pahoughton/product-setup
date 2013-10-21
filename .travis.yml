@@ -25,3 +25,5 @@ script:
    
 after_script:
   - find . -type f -ls
+  - puppet config print
+  - facter
